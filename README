@@ -1,0 +1,27 @@
+A simple chat program using TCP, it includes a server and multiple clients, clients talk to each other through the server.
+It supports functionalities like sending messages, broadcasting messages, requiring the user's list.
+
+To use this program:
+make (compile the files)
+./server [port-number] (start the server)
+./cclient handle_name server-name server-port (on other terminal, start the client)
+
+For example, if I want to start the server on account unix1 using the port 55555, the command will be "./server 55555".
+Then, if on account unix2 I want to start the first client, and give it a name called client1, 
+the command is "./cclient client1 unix1 55555". Using the same way, on account unix3 I create the second client, 
+the command is "./cclient client2 unix1 55555". So these two clients can talk to each other.
+
+To make these clients talking to each other, the commands are:
+
+%M [num-handles] destination-handles [destination-handles] [text]
+    For example, client1 want to talk to client2, "%M 1 client2 How are you?"
+
+%B [text]
+    This will broadcast the text to all other clients, "%B Hello!"
+
+%L
+    This will print out the list of all clients
+
+%E
+    This will exit the current client
+
